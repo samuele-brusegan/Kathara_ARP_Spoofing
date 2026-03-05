@@ -1,0 +1,5 @@
+#file di cofnigurazione del router sulla rete 192.168.1.0/24
+
+ip addr add 192.168.1.1/24 dev eth0 #sull'interfaccia eth0 c'è .1
+
+#echo 1 > /proc/sys/net/ipv4/ip_forward #ip forwarding per farlo funzionare come router

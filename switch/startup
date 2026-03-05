@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Nome del bridge
+BR_NAME="br0"
+# Interfacce fisiche da unire
+IF1="eth1"
+IF2="eth2"
+
+echo "Creazione del bridge $BR_NAME..."
+brctl addbr $BR_NAME
+brctl addif $BR_NAME $IF1
+brctl addif $BR_NAME $IF2
+
+# Attiva le interfacce e il bridge
+ip link set $IF1 up
+ip link set $IF2 up
+ip link set $BR_NAME up
+
+echo "Switch attivo su $BR_NAME unendo $IF1 e $IF2."
+
+# Mantieni il container in esecuzione
+tail -f /dev/null
